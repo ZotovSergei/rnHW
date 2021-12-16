@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import Header from "./modules/Header";
 import Search from "./components/Search";
-import Cards from "./modules/Cards";
+import Cards from "./components/Cards";
 
 const App = () => {
     return (
