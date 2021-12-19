@@ -2,28 +2,19 @@ import React, {useEffect, useState} from "react";
 import Card from "../Card";
 import {FlatList, ListRenderItem, StyleSheet, View} from "react-native";
 import {Products} from "../../utils/typings";
-
-const url = "https://demo.spreecommerce.org";
-const apiProducts = "/api/v2/storefront/products";
+import {getProducts} from "../../utils/fetchData";
 
 const Cards = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getProducts = async () => {
-    try {
-      const response = await fetch(`${url}${apiProducts}`);
-      const json = await response.json();
-      setData(json.data);
-    } catch (error) {
-      console.error(error);
-    } finally {
+  useEffect(() => {
+    async function fetchMyAPI() {
+      const response = await getProducts();
+      setData(response);
       setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    getProducts();
+    fetchMyAPI();
   }, []);
 
   const renderItem: ListRenderItem<Products> = ({item}) => {
@@ -35,6 +26,7 @@ const Cards = () => {
     return (
       <Card
         id={id}
+        // TODO: Remove after how I know where images for products
         image={
           "https://safetynetwireless.com/wp-content/uploads/2018/04/SafetyNet_Phone.png"
         }
