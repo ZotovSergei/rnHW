@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Card from "../Card";
-import store, {Store} from "../../store/store";
 import {FlatList, ListRenderItem, StyleSheet, View} from "react-native";
+import {Store} from "../../store/store";
 
+type Props = {
+    store: Store[]
+}
 
-const Cards = () => {
+const Cards:FC<Props> = ({store}) => {
     const renderItem: ListRenderItem<Store> = ({item}) => {
         const {id,image,title,price,discountPrice,sale} = item;
         return <Card
