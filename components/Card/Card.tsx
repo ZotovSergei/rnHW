@@ -5,11 +5,11 @@ import Prices from "../Prices";
 
 type Props = {
   id: string;
-  image?: string;
-  title?: string;
-  price?: number;
-  discountPrice?: number;
-  sale?: number;
+  image: string;
+  title: string;
+  price: string;
+  discountPrice: string;
+  sale: string;
 };
 
 const Card: FC<Props> = ({id, image, title, price, discountPrice, sale}) => {

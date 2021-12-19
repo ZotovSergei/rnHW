@@ -2,9 +2,9 @@ import React, {FC} from "react";
 import {StyleSheet, Text, View} from "react-native";
 
 type Props = {
-  discountPrice?: number;
-  price?: number;
-  sale?: number;
+  discountPrice: string;
+  price: string;
+  sale: string;
   title?: string;
 };
 
@@ -16,7 +16,7 @@ const Prices: FC<Props> = ({discountPrice, price, sale, title}) => {
         <Text style={[styles.discountPrice, styles.commonText]}>
           ${discountPrice}
         </Text>
-        <Text style={[styles.price, styles.commonText]}>${price}</Text>
+        <Text style={[styles.price, styles.commonText]}>{price}</Text>
         {sale && (
           <Text style={[styles.sale, styles.commonText]}>{sale}% Off</Text>
         )}
