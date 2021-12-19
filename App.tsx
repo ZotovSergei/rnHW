@@ -1,19 +1,12 @@
-import React from 'react';
-import {
-    View,
-} from 'react-native';
-import Header from "./modules/Header";
-import Search from "./components/Search";
-import Cards from "./components/Cards";
-
+import React from "react";
+import {SafeAreaView} from "react-native";
+import ProductDetails from "./screens/ProductDetails";
 const App = () => {
-    return (
-        <View>
-            <Header/>
-            <Search/>
-            <Cards/>
-        </View>
-    );
+  return (
+    <SafeAreaView>
+      <ProductDetails />
+    </SafeAreaView>
+  );
 };
 
 export default App;
