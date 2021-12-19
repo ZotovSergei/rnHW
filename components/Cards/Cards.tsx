@@ -27,7 +27,6 @@ const Cards = () => {
   }, []);
 
   const renderItem: ListRenderItem<Products> = ({item}) => {
-    console.log(item);
     const {
       id,
       // links: {self},
@@ -68,7 +67,6 @@ const Cards = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
     justifyContent: "space-between",
     flex: 1,
   },
