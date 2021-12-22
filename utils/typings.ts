@@ -11,6 +11,7 @@ export type Attributes = {
   price: string;
   currency: string;
   display_price: string;
+  image: string;
 };
 
 export type Products = {

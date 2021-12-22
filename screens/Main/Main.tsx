@@ -1,5 +1,5 @@
 import React from "react";
-import {View} from "react-native";
+import {SafeAreaView} from "react-native";
 import Header from "../../modules/Header";
 import Search from "../../components/Search";
 import Cards from "../../components/Cards";
@@ -7,7 +7,7 @@ import Layout from "../../components/Layout/Layout";
 
 const Main = () => {
   return (
-    <View>
+    <SafeAreaView>
       <>
         <Header title={"Ecommerce Store"} />
         <Layout>
@@ -15,7 +15,7 @@ const Main = () => {
           <Cards />
         </Layout>
       </>
-    </View>
+    </SafeAreaView>
   );
 };
 
