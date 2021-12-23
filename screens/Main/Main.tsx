@@ -10,8 +10,8 @@ const Main = () => {
     <View>
       <>
         <Header title={"Ecommerce Store"} />
+        <Search />
         <Layout>
-          <Search />
           <Cards />
         </Layout>
       </>

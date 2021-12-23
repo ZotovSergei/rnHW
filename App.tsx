@@ -1,11 +1,14 @@
 import React from "react";
-import {View} from "react-native";
 import Main from "./screens/Main";
+import ProductDetails from "./screens/ProductDetails";
+import {SafeAreaView} from "react-native";
+
 const App = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Main />
-    </View>
+      {/*<ProductDetails />*/}
+    </SafeAreaView>
   );
 };
 

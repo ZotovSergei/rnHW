@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
   sales: {
     marginTop: 10,
     flexDirection: "row",
-    justifyContent: "space-around",
     paddingHorizontal: 5,
     flexWrap: "wrap",
   },

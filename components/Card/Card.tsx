@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 
-import {Image, StyleSheet, View} from "react-native";
+import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import Prices from "../Prices";
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 
 const Card: FC<Props> = ({id, image, title, price, discountPrice, sale}) => {
   return (
-    <View style={styles.container} key={id}>
+    <TouchableOpacity style={styles.container} key={id}>
       <View style={styles.item}>
         <Image
           style={styles.tinyLogo}
@@ -30,7 +30,7 @@ const Card: FC<Props> = ({id, image, title, price, discountPrice, sale}) => {
           title={title}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
