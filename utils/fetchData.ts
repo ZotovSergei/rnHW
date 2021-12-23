@@ -11,7 +11,8 @@ type ApiProducts = {
   data: Products[];
 };
 
-export const getProducts = async (): Promise<Products[]> => {
+export const getProducts = async (reload?: boolean): Promise<Products[]> => {
+  if (reload) page = 1;
   const pageUrl = `?page=${page}`;
   const url = `${apiUrl}${apiProducts}${pageUrl}&per_page=5`;
   const response = await fetch(url);

@@ -1,18 +1,31 @@
 import React, {useEffect, useState} from "react";
 import Card from "../Card";
-import {FlatList, ListRenderItem, StyleSheet, View} from "react-native";
+import {
+  FlatList,
+  ListRenderItem,
+  RefreshControl,
+  StyleSheet,
+  View,
+} from "react-native";
 import {Products} from "../../utils/typings";
 import {getProducts} from "../../utils/fetchData";
 
 const Cards = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState<Products[]>([]);
+  const [refreshing, setRefreshing] = React.useState(false);
 
-  const fetchMyAPI = async () => {
-    const response = await getProducts();
+  const fetchMyAPI = async (reload: boolean = false) => {
+    const response = await getProducts(reload);
     setData([...data, ...response]);
     setLoading(false);
   };
+
+  const onRefresh = React.useCallback(() => {
+    setData([]);
+    setRefreshing(true);
+    fetchMyAPI(true).then(() => setRefreshing(false));
+  }, []);
 
   useEffect(() => {
     fetchMyAPI();
@@ -46,8 +59,11 @@ const Cards = () => {
           keyExtractor={(item) => item.id}
           ItemSeparatorComponent={() => <View style={{height: 20}} />}
           ListHeaderComponent={() => <View style={{height: 20}} />}
-          onEndReached={fetchMyAPI}
+          onEndReached={() => fetchMyAPI()}
           onEndReachedThreshold={0.5}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
         />
       ) : (
         <></>
