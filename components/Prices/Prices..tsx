@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
   commonText: {
     fontWeight: "700",
     fontSize: 15,
-    marginRight: 10,
   },
   discountPrice: {
     color: "#000",

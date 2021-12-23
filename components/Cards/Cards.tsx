@@ -7,11 +7,13 @@ import {
   StyleSheet,
   View,
 } from "react-native";
+
 import {Products} from "../../utils/typings";
 import {getProducts} from "../../utils/fetchData";
 
 const Cards = () => {
   const [isLoading, setLoading] = useState(true);
+
   const [data, setData] = useState<Products[]>([]);
   const [refreshing, setRefreshing] = React.useState(false);
 
