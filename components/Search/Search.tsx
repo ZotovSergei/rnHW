@@ -1,5 +1,6 @@
 import React from "react";
 import {StyleSheet, TextInput, View} from "react-native";
+import {Colors} from "../../utils/constants";
 
 const Search = () => {
   return (
@@ -20,16 +21,16 @@ const styles = StyleSheet.create({
     margin: 20,
     // TODO: replace on shadow
     borderWidth: 1,
-    borderColor: "#8F8F8F",
+    borderColor: Colors.SuvaGrey,
     borderRadius: 4,
     paddingLeft: 20,
   },
   shadowContainer: {
-    backgroundColor: "#E5E5E5",
+    backgroundColor: Colors.Whisper,
     paddingBottom: 3,
   },
   shadowItem: {
-    backgroundColor: "#FFF",
+    backgroundColor: Colors.White,
   },
 });
 

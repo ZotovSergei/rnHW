@@ -67,9 +67,7 @@ const Cards = () => {
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
         />
-      ) : (
-        <></>
-      )}
+      ) : null}
     </View>
   );
 };

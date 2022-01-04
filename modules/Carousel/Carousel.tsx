@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Prev from "../../public/icons/prev.svg";
 import Next from "../../public/icons/next.svg";
+import {Colors} from "../../utils/constants";
 
 type Props = {
   image?: string;
@@ -28,15 +29,18 @@ const Carousel: FC<Props> = ({image}) => {
           horizontal={true}
           pagingEnabled
           showsHorizontalScrollIndicator={false}
-          onScroll={Animated.event([
-            {
-              nativeEvent: {
-                contentOffset: {
-                  x: scrollX,
+          onScroll={Animated.event(
+            [
+              {
+                nativeEvent: {
+                  contentOffset: {
+                    x: scrollX,
+                  },
                 },
               },
-            },
-          ])}
+            ],
+            {useNativeDriver: true}
+          )}
           scrollEventThrottle={1}>
           {images.map((image, imageIndex) => {
             return (
@@ -107,7 +111,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   infoText: {
-    color: "white",
+    color: Colors.White,
     fontSize: 16,
     fontWeight: "bold",
   },
@@ -115,7 +119,7 @@ const styles = StyleSheet.create({
     height: 8,
     width: 8,
     borderRadius: 4,
-    backgroundColor: "silver",
+    backgroundColor: Colors.Silver,
     marginHorizontal: 4,
   },
   indicatorContainer: {
