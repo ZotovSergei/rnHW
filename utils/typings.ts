@@ -10,10 +10,22 @@ export type Product = {
   sale: string;
 };
 
+export type ModalParams = {
+  title?: string;
+  subtitle?: string;
+  type: "error" | "warning" | "success";
+};
+
 export type ScreensType = {
   Home: undefined;
   Product: Product;
   Search: undefined;
+  Root: undefined;
+  Orders: undefined;
+  Cart: undefined;
+  Profile: undefined;
+  WishList: undefined;
+  ModalScreen: ModalParams;
 };
 
 export type Links = {
@@ -42,7 +54,18 @@ export type ProductScreenNavigationProp = NativeStackScreenProps<
   ScreensType,
   Screens.Product
 >["navigation"];
+
 export type ProductScreenRouteProp = NativeStackScreenProps<
   ScreensType,
   Screens.Product
+>["route"];
+
+export type ScreensNavigationProp = NativeStackScreenProps<
+  ScreensType,
+  Screens
+>["navigation"];
+
+export type ScreensRouteProp<TScreen extends Screens> = NativeStackScreenProps<
+  ScreensType,
+  TScreen
 >["route"];

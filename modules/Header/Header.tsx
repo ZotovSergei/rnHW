@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import {Text, View, StyleSheet} from "react-native";
 import Menu from "../../public/icons/menu.svg";
-import Basket from "../../public/icons/basket.svg";
+import Basket from "../../public/icons/cart.svg";
 import BackArrow from "../../public/icons/backArrow.svg";
 import Favorite from "../../public/icons/favorite.svg";
 import {Colors} from "../../utils/constants";

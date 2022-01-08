@@ -19,3 +19,11 @@ export const Product: NativeStackNavigationOptions = {
   headerTitle: "",
   headerTintColor: Colors.White,
 };
+
+export const CommonStyleHeader: NativeStackNavigationOptions = {
+  headerStyle: {
+    backgroundColor: Colors.PacificBlue,
+  },
+  headerTitle: "",
+  headerTintColor: Colors.White,
+};

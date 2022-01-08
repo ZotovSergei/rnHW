@@ -8,9 +8,16 @@ export enum Colors {
   Charcoal = "#4A4A4A",
   Silver = "#C0C0C0",
   DeepSkyBlue = "#00A8F3",
+  DarkJungleGreen = "#1C1F27",
 }
 export enum Screens {
   Home = "Home",
   Product = "Product",
   Search = "Search",
+  Root = "Root",
+  Profile = "Profile",
+  Orders = "Orders",
+  WishList = "WishList",
+  Cart = "Cart",
+  ModalScreen = "ModalScreen",
 }

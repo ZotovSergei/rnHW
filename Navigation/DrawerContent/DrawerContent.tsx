@@ -1,6 +1,6 @@
 import React from "react";
-import {SectionList, StyleSheet, Text, View} from "react-native";
-import {Colors} from "../../utils/constants";
+import {SectionList, StyleSheet, Text, TouchableOpacity} from "react-native";
+import {Colors, Screens} from "../../utils/constants";
 import Separator from "../../components/Separator";
 import MyProfile from "../../public/icons/myProfile.svg";
 import MyCart from "../../public/icons/myCart.svg";
@@ -9,41 +9,46 @@ import MyOrder from "../../public/icons/myCart.svg";
 import Email from "../../public/icons/email.svg";
 import Call from "../../public/icons/call.svg";
 import Share from "../../public/icons/share.svg";
+import {useNavigation} from "@react-navigation/native";
 
 const myAccountSection = {
   title: "My Account",
   data: [
-    {icon: <MyProfile />, text: "My Profile"},
-    {icon: <MyWishList />, text: "My Wish List"},
-    {icon: <MyCart />, text: "My Cart"},
-    {icon: <MyOrder />, text: "My Orders"},
+    {icon: <MyProfile />, text: "My Profile", screen: Screens.Profile},
+    {icon: <MyWishList />, text: "My Wish List", screen: Screens.WishList},
+    {icon: <MyCart />, text: "My Cart", screen: Screens.Cart},
+    {icon: <MyOrder />, text: "My Orders", screen: Screens.Orders},
   ],
 };
 
 const supportSection = {
   title: "Support",
   data: [
-    {icon: <Email />, text: "Email"},
-    {icon: <Call />, text: "Call"},
+    {icon: <Email />, text: "Email", screen: Screens.Profile},
+    {icon: <Call />, text: "Call", screen: Screens.Profile},
   ],
 };
 
 const shareSection = {
-  title: "",
-  data: [{icon: <Share />, text: "Share"}],
+  title: null,
+  data: [{icon: <Share />, text: "Share", screen: Screens.Profile}],
 };
 
 const DrawerContent = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <Text style={styles.title}>Ecommerce Store</Text>
       <SectionList
         sections={[myAccountSection, supportSection, shareSection]}
-        renderItem={({item}) => (
-          <View style={styles.itemContainer}>
-            {item.icon}
-            <Text style={styles.item}>{item.text}</Text>
-          </View>
+        renderItem={({item: {icon, screen, text}}) => (
+          <TouchableOpacity
+            style={styles.itemContainer}
+            onPress={() => navigation.navigate(screen)}>
+            {icon}
+            <Text style={styles.item}>{text}</Text>
+          </TouchableOpacity>
         )}
         renderSectionHeader={({section}) =>
           section.title ? (

@@ -1,66 +1,82 @@
 import React from "react";
-import Home from "./screens/Main";
 import ProductDetails from "./screens/ProductDetails";
 import {NavigationContainer} from "@react-navigation/native";
-import {createDrawerNavigator} from "@react-navigation/drawer";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import Menu from "./public/icons/menu.svg";
-import Basket from "./public/icons/basket.svg";
-import {Main as MainOptions, Product} from "./helpers/options";
+import Basket from "./public/icons/cart.svg";
+import {CommonStyleHeader, Product} from "./helpers/options";
 import Favorite from "./public/icons/favorite.svg";
 import {StyleSheet, View} from "react-native";
-import {Colors, Screens} from "./utils/constants";
+import {Screens} from "./utils/constants";
 import {ScreensType} from "./utils/typings";
-import DrawerContent from "./Navigation/DrawerContent";
+import Drawer from "./Navigation/Drawer";
+import Profile from "./screens/Profile";
+import Cart from "./screens/Cart";
+import WishList from "./screens/WishList";
+import Orders from "./screens/Orders";
+import ModalScreen from "./screens/ModalScreen";
 
 const Stack = createNativeStackNavigator<ScreensType>();
-const Drawer = createDrawerNavigator();
+
 const App = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        drawerContent={(props) => <DrawerContent {...props} />}>
-        <Drawer.Screen
-          name="Home"
-          component={Home}
-          options={{
-            headerRight: () => (
-              <View
-                style={{
-                  paddingRight: 20,
-                }}>
-                <Basket />
-              </View>
-            ),
-            ...MainOptions,
-          }}
-        />
-      </Drawer.Navigator>
-      {/*<Stack.Navigator initialRouteName={Screens.Home}>*/}
-      {/*<Stack.Screen*/}
-      {/*  name="Home"*/}
-      {/*  component={Home}*/}
-      {/*  options={{*/}
-      {/*    headerRight: () => <Basket />,*/}
-      {/*    headerLeft: () => <Menu />,*/}
-      {/*    ...MainOptions,*/}
-      {/*  }}*/}
-      {/*/>*/}
-      {/*  <Stack.Screen*/}
-      {/*    name={Screens.Product}*/}
-      {/*    component={ProductDetails}*/}
-      {/*    options={{*/}
-      {/*      headerRight: () => (*/}
-      {/*        <View style={styles.icons}>*/}
-      {/*          <Favorite />*/}
-      {/*          <Basket />*/}
-      {/*        </View>*/}
-      {/*      ),*/}
-      {/*      ...Product,*/}
-      {/*    }}*/}
-      {/*  />*/}
-      {/*</Stack.Navigator>*/}
+      <Stack.Navigator>
+        <Stack.Group>
+          <Stack.Screen
+            name={Screens.Root}
+            component={Drawer}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={Screens.Product}
+            component={ProductDetails}
+            options={{
+              headerRight: () => (
+                <View style={styles.icons}>
+                  <Favorite />
+                  <Basket />
+                </View>
+              ),
+              ...Product,
+            }}
+          />
+          <Stack.Screen
+            name={Screens.Profile}
+            component={Profile}
+            options={{
+              ...CommonStyleHeader,
+            }}
+          />
+          <Stack.Screen
+            name={Screens.Cart}
+            component={Cart}
+            options={{
+              ...CommonStyleHeader,
+            }}
+          />
+          <Stack.Screen
+            name={Screens.WishList}
+            component={WishList}
+            options={{
+              ...CommonStyleHeader,
+            }}
+          />
+          <Stack.Screen
+            name={Screens.Orders}
+            component={Orders}
+            options={{
+              ...CommonStyleHeader,
+            }}
+          />
+        </Stack.Group>
+        <Stack.Group
+          screenOptions={{
+            presentation: "modal",
+            ...CommonStyleHeader,
+          }}>
+          <Stack.Screen name={Screens.ModalScreen} component={ModalScreen} />
+        </Stack.Group>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
