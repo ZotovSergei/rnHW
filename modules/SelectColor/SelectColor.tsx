@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import Subtitle from "../../components/Subtitle";
+import {Colors} from "../../utils/constants";
 
 type Props = {
   colors?: string[];
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: "#F7F7F7",
+    backgroundColor: Colors.WhiteSmoke,
     minWidth: 50,
     height: 30,
     paddingVertical: 5,
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 15,
-    color: "#4A4A4A",
+    color: Colors.Charcoal,
   },
 });
 export default SelectColor;

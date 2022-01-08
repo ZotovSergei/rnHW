@@ -2,19 +2,26 @@ import React, {FC} from "react";
 
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import Prices from "../Prices";
+import {useNavigation} from "@react-navigation/native";
+import {Colors, Screens} from "../../utils/constants";
+import {Product, ProductScreenNavigationProp} from "../../utils/typings";
 
-type Props = {
-  id: string;
-  image: string;
-  title: string;
-  price: string;
-  discountPrice: string;
-  sale: string;
-};
-
-const Card: FC<Props> = ({id, image, title, price, discountPrice, sale}) => {
+const Card: FC<Product> = ({id, image, title, price, discountPrice, sale}) => {
+  const navigation = useNavigation<ProductScreenNavigationProp>();
+  const handleGoToProduct = () =>
+    navigation.navigate(Screens.Product, {
+      title,
+      id,
+      image,
+      price,
+      discountPrice,
+      sale,
+    });
   return (
-    <TouchableOpacity style={styles.container} key={id}>
+    <TouchableOpacity
+      style={styles.container}
+      key={id}
+      onPress={handleGoToProduct}>
       <View style={styles.item}>
         <Image
           style={styles.tinyLogo}
@@ -38,7 +45,7 @@ const styles = StyleSheet.create({
   container: {
     width: "47%",
     borderRadius: 5,
-    backgroundColor: "#E5E5E5",
+    backgroundColor: Colors.Whisper,
     // TODO: Change to shadow
     paddingBottom: 4,
     paddingLeft: 1,
@@ -49,7 +56,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: "100%",
     height: "100%",
-    backgroundColor: "#FFF",
+    backgroundColor: Colors.White,
   },
   tinyLogo: {
     marginTop: 5,

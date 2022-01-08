@@ -6,23 +6,25 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Header from "../../modules/Header";
 import Carousel from "../../modules/Carousel";
 import store from "../../store/store";
 import Prices from "../../components/Prices";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/Layout";
 import Separator from "../../components/Separator";
 import SelectColor from "../../modules/SelectColor";
 import Subtitle from "../../components/Subtitle";
+import {useRoute} from "@react-navigation/native";
+import {ProductScreenRouteProp} from "../../utils/typings";
+import {Colors} from "../../utils/constants";
 
 const mockData = store[0];
 
 const ProductDetails = () => {
-  const {discountPrice, price, sale, image, title, colors, description} =
-    mockData;
+  const {colors, description} = mockData;
+  const route = useRoute<ProductScreenRouteProp>();
+  const {discountPrice, price, sale, image, title} = route.params ?? {};
   return (
     <View>
-      <Header hasBackButton hasFavoriteButton />
       <ScrollView>
         <Layout>
           <Carousel image={image} />
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   buttonAddToCard: {
-    backgroundColor: "#008ACE",
+    backgroundColor: Colors.PacificBlue,
     width: "100%",
     height: 40,
     borderRadius: 4,
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   textAddToCard: {
-    color: "#FFF",
+    color: Colors.White,
     fontWeight: "500",
     fontSize: 15,
     lineHeight: 16,

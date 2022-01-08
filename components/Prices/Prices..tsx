@@ -1,5 +1,6 @@
 import React, {FC} from "react";
 import {StyleSheet, Text, View} from "react-native";
+import {Colors} from "../../utils/constants";
 
 type Props = {
   discountPrice: string;
@@ -31,14 +32,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   discountPrice: {
-    color: "#000",
+    color: Colors.Black,
   },
   price: {
-    color: "#8F8F8F",
+    color: Colors.SuvaGrey,
     textDecorationLine: "line-through",
   },
   sale: {
-    color: "#00A8F3",
+    color: Colors.DeepSkyBlue,
   },
   sales: {
     marginTop: 10,

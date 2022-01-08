@@ -4,6 +4,7 @@ import Menu from "../../public/icons/menu.svg";
 import Basket from "../../public/icons/basket.svg";
 import BackArrow from "../../public/icons/backArrow.svg";
 import Favorite from "../../public/icons/favorite.svg";
+import {Colors} from "../../utils/constants";
 
 type Props = {
   title?: string;
@@ -27,15 +28,16 @@ const Header: FC<Props> = ({hasBackButton, title, hasFavoriteButton}) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#008ACE",
+    backgroundColor: Colors.PacificBlue,
+    width: "100%",
     height: 55,
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    padding: 10,
+    // padding: 10,
   },
   title: {
-    color: "#FFF",
+    color: Colors.White,
     fontSize: 20,
     fontWeight: "500",
   },
