@@ -8,7 +8,7 @@ import Favorite from './public/icons/favorite.svg';
 import {StyleSheet, View} from 'react-native';
 import {Screens} from './utils/constants';
 import {ScreensType} from './utils/typings';
-import Drawer from './Navigation/Drawer';
+import Drawer from './navigation/Drawer';
 import Profile from './screens/Profile';
 import Cart from './screens/Cart';
 import WishList from './screens/WishList';
