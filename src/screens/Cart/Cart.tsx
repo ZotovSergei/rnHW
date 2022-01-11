@@ -16,7 +16,7 @@ const isNotLogin = false;
 const url = 'https://localhost:80';
 
 const Cart = () => {
-  const navigation = useNavigation<ScreensNavigationProp>();
+  const navigation = useNavigation<ScreensNavigationProp<Screens.Cart>>();
 
   useEffect(() => {
     navigation.setOptions({
