@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {Colors} from '../../utils/constants';
 import NextArrow from '../../public/icons/nextArrow.svg';
+import {getToken} from '../../helpers/auth';
 
 const linkText = 'New here? Sign Up';
 const forgetPasswordText = 'Forgot Password?';
@@ -20,7 +21,6 @@ const url = 'https://localhost:80';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   return (
     <View style={styles.container}>
       <View>
@@ -38,11 +38,17 @@ const Login = () => {
           onChangeText={setPassword}
           value={password}
           placeholder="Text"
+          secureTextEntry={true}
         />
         <Text style={styles.passwordLink} onPress={() => Linking.openURL(url)}>
           {forgetPasswordText}
         </Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={async () => {
+            const data = await getToken(password, email);
+            console.log(data);
+          }}>
           <Text style={styles.buttonText}>{signInText}</Text>
         </TouchableOpacity>
         <Text style={styles.link} onPress={() => Linking.openURL(url)}>
@@ -102,6 +108,7 @@ const styles = StyleSheet.create({
     color: Colors.PacificBlue,
     textAlign: 'center',
     marginBottom: 63,
+    marginTop: 70,
     width: 200,
     fontWeight: 'bold',
     alignSelf: 'center',
