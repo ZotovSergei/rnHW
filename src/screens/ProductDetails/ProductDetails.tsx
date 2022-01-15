@@ -7,7 +7,6 @@ import {
   View,
 } from 'react-native';
 import Carousel from '../../modules/Carousel';
-import store from '../../store/store';
 import Prices from '../../components/Prices';
 import Layout from '../../components/Layout';
 import Separator from '../../components/Separator';
@@ -17,10 +16,7 @@ import {useRoute} from '@react-navigation/native';
 import {ProductScreenRouteProp} from '../../utils/typings';
 import {Colors} from '../../utils/constants';
 
-const mockData = store[0];
-
 const ProductDetails = () => {
-  const {colors, description} = mockData;
   const route = useRoute<ProductScreenRouteProp>();
   const {discountPrice, price, sale, image, title} = route.params ?? {};
   return (
@@ -35,11 +31,13 @@ const ProductDetails = () => {
             title={title}
           />
           <Separator />
-          <SelectColor colors={colors} />
+          <SelectColor colors={['Black', 'Cosmos', 'Pink', 'Blue']} />
           <Separator />
           <View>
             <Subtitle text={'Description'} />
-            <Text style={styles.description}>{description}</Text>
+            <Text style={styles.description}>
+              Elit ad irure ipsum in do incididunt eiusmod.
+            </Text>
             <TouchableOpacity style={styles.buttonAddToCard}>
               <Text style={styles.textAddToCard}>
                 {'Add to Cart'.toUpperCase()}

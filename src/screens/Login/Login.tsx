@@ -7,9 +7,12 @@ import {
   TouchableOpacity,
   Linking,
 } from 'react-native';
-import {Colors} from '../../utils/constants';
+import {Colors, Screens} from '../../utils/constants';
 import NextArrow from '../../public/icons/nextArrow.svg';
-import {getToken} from '../../helpers/auth';
+import {getToken} from '../../store/asycnActions/auth';
+import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {ScreensNavigationProp} from '../../utils/typings';
 
 const linkText = 'New here? Sign Up';
 const forgetPasswordText = 'Forgot Password?';
@@ -21,6 +24,12 @@ const url = 'https://localhost:80';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigation = useNavigation<ScreensNavigationProp<Screens.Root>>();
+  // TODO: Need to add type for state
+  const goToHome = () => {
+    navigation.navigate(Screens.Root);
+  };
   return (
     <View style={styles.container}>
       <View>
@@ -45,16 +54,18 @@ const Login = () => {
         </Text>
         <TouchableOpacity
           style={styles.button}
-          onPress={async () => {
-            const data = await getToken(password, email);
-            console.log(data);
+          // onPress={() => dispatch({type: 'NONE',payload: 'NONE'})}>
+          onPress={() => {
+            dispatch(getToken(password, email, goToHome));
           }}>
           <Text style={styles.buttonText}>{signInText}</Text>
         </TouchableOpacity>
         <Text style={styles.link} onPress={() => Linking.openURL(url)}>
           {linkText}
         </Text>
-        <TouchableOpacity style={[styles.button, styles.buttonSignUp]}>
+        <TouchableOpacity
+          style={[styles.button, styles.buttonSignUp]}
+          onPress={goToHome}>
           <Text style={styles.buttonText}>{skipLoginText}</Text>
           <NextArrow />
         </TouchableOpacity>

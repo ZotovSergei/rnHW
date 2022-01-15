@@ -16,13 +16,17 @@ export type ModalParams = {
   type: 'error' | 'warning' | 'success';
 };
 
+export type CardType = {
+  accessToken: string
+}
+
 export type ScreensType = {
   Home: undefined;
   Product: Product;
   Search: undefined;
   Root: undefined;
   Orders: undefined;
-  Cart: undefined;
+  Cart: CardType;
   Profile: undefined;
   WishList: undefined;
   ModalScreen: ModalParams;
