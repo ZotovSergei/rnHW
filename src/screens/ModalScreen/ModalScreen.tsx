@@ -1,13 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Colors, Screens} from '../../utils/constants';
-import {useRoute} from '@react-navigation/native';
-import {ScreensRouteProp} from '../../utils/typings';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {ScreensNavigationProp, ScreensRouteProp} from '../../utils/typings';
 import ModalErrorIcon from '../../public/icons/modal_error.svg';
 import ModalWarningIcon from '../../public/icons/modal_warning.svg';
 import ModalSuccessIcon from '../../public/icons/modal_success.svg';
 
+const LOGIN = 'Login';
+const SIGN_UP = 'Sign Up';
+
 const ModalScreen = () => {
+  const navigation =
+    useNavigation<ScreensNavigationProp<Screens.Login & Screens.SignUp>>();
   const route = useRoute<ScreensRouteProp<Screens.ModalScreen>>();
   const {title, type, subtitle} = route.params ?? {};
   const [Image, setImage] = useState<JSX.Element>(<ModalErrorIcon />);
@@ -30,11 +35,15 @@ const ModalScreen = () => {
         </View>
         {type === 'warning' ? (
           <View style={styles.wrapperButton}>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>LOGIN</Text>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate(Screens.Login)}>
+              <Text style={styles.buttonText}>{LOGIN}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>SIGN UP</Text>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate(Screens.SignUp)}>
+              <Text style={styles.buttonText}>{SIGN_UP}</Text>
             </TouchableOpacity>
           </View>
         ) : (

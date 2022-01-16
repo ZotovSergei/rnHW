@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {ScreensNavigationProp} from '../../utils/typings';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {ScreensNavigationProp, ScreensRouteProp} from '../../utils/typings';
 import {Colors, Screens} from '../../utils/constants';
 import Avatar from '../../public/icons/avatar.svg';
 import EmptyCart from '../../public/icons/emptyCart.svg';
@@ -11,13 +11,11 @@ const subtitleLogin = 'Login first to view your cart';
 const titleCartEmpty = 'Your Card is empty!';
 const subtitleCartEmpty = 'Add product in your cart now';
 const linkText = 'New here? Sign Up';
-const isNotLogin = false;
-// const isCartEmpty = false;
-const url = 'https://localhost:80';
 
 const Cart = () => {
-  const navigation = useNavigation<ScreensNavigationProp>();
-
+  const navigation = useNavigation<ScreensNavigationProp<Screens.Cart>>();
+  const route = useRoute<ScreensRouteProp<Screens.Cart>>();
+  const {accessToken} = route.params ?? {};
   useEffect(() => {
     navigation.setOptions({
       title: 'My Cart',
@@ -30,7 +28,7 @@ const Cart = () => {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        {isNotLogin ? (
+        {!accessToken ? (
           <>
             <View style={styles.avatarWrapper}>
               <Avatar />
@@ -39,10 +37,12 @@ const Cart = () => {
             <Text style={styles.subtitle}>{subtitleLogin}</Text>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => console.log('to Login Now')}>
+              onPress={() => navigation.navigate(Screens.Login)}>
               <Text style={styles.buttonText}>LOGIN NOW</Text>
             </TouchableOpacity>
-            <Text style={styles.link} onPress={() => Linking.openURL(url)}>
+            <Text
+              style={styles.link}
+              onPress={() => navigation.navigate(Screens.SignUp)}>
               {linkText}
             </Text>
           </>

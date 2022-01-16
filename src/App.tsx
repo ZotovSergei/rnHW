@@ -14,13 +14,16 @@ import Cart from './screens/Cart';
 import WishList from './screens/WishList';
 import Orders from './screens/Orders';
 import ModalScreen from './screens/ModalScreen';
+import SignUp from './screens/SignUp';
+import ForgotPassword from './screens/ForgotPassword';
+import Login from './screens/Login';
 
 const Stack = createNativeStackNavigator<ScreensType>();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName={Screens.Login}>
         <Stack.Group>
           <Stack.Screen
             name={Screens.Root}
@@ -75,6 +78,29 @@ const App = () => {
             ...CommonStyleHeader,
           }}>
           <Stack.Screen name={Screens.ModalScreen} component={ModalScreen} />
+        </Stack.Group>
+        <Stack.Group>
+          <Stack.Screen
+            name={Screens.SignUp}
+            component={SignUp}
+            options={{
+              headerTitle: '',
+            }}
+          />
+          <Stack.Screen
+            name={Screens.Login}
+            component={Login}
+            options={{
+              headerTitle: '',
+            }}
+          />
+          <Stack.Screen
+            name={Screens.ForgotPassword}
+            component={ForgotPassword}
+            options={{
+              headerTitle: '',
+            }}
+          />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

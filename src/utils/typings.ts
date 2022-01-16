@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {Screens} from './constants';
+import { Screens } from './constants';
 
 export type Product = {
   id: string;
@@ -16,16 +16,23 @@ export type ModalParams = {
   type: 'error' | 'warning' | 'success';
 };
 
+export type CardType = {
+  accessToken: string
+}
+
 export type ScreensType = {
   Home: undefined;
   Product: Product;
   Search: undefined;
   Root: undefined;
   Orders: undefined;
-  Cart: undefined;
+  Cart: CardType;
   Profile: undefined;
   WishList: undefined;
   ModalScreen: ModalParams;
+  SignUp: undefined;
+  Login: undefined;
+  ForgotPassword: undefined;
 };
 
 export type Links = {
@@ -60,13 +67,12 @@ export type ProductScreenRouteProp = NativeStackScreenProps<
   Screens.Product
 >['route'];
 
-export type ScreensNavigationProp = NativeStackScreenProps<
+// eslint-disable-next-line prettier/prettier
+export type ScreensNavigationProp<TScreen extends Screens> = NativeStackScreenProps<
   ScreensType,
-  Screens
+  TScreen
 >['navigation'];
 
-//TODO: FIXED IT
-// eslint-disable-next-line prettier/prettier
 export type ScreensRouteProp<TScreen extends Screens> = NativeStackScreenProps<
   ScreensType,
   TScreen

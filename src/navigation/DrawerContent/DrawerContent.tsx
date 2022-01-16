@@ -10,6 +10,7 @@ import Email from '../../public/icons/email.svg';
 import Call from '../../public/icons/call.svg';
 import Share from '../../public/icons/share.svg';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 const myAccountSection = {
   title: 'My Account',
@@ -36,7 +37,7 @@ const shareSection = {
 
 const DrawerContent = () => {
   const navigation = useNavigation();
-
+  const accessToken = useSelector((state) => state.tokenReducer.access_token);
   return (
     <>
       <Text style={styles.title}>Ecommerce Store</Text>
@@ -45,7 +46,11 @@ const DrawerContent = () => {
         renderItem={({item: {icon, screen, text}}) => (
           <TouchableOpacity
             style={styles.itemContainer}
-            onPress={() => navigation.navigate(screen)}>
+            onPress={() =>
+              navigation.navigate(screen, {
+                accessToken,
+              })
+            }>
             {icon}
             <Text style={styles.item}>{text}</Text>
           </TouchableOpacity>

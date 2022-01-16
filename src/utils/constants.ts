@@ -20,4 +20,7 @@ export enum Screens {
   WishList = 'WishList',
   Cart = 'Cart',
   ModalScreen = 'ModalScreen',
+  SignUp = 'SignUp',
+  Login = 'Login',
+  ForgotPassword = 'ForgotPassword',
 }
