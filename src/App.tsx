@@ -13,7 +13,7 @@ import Profile from './screens/Profile';
 import Cart from './screens/Cart';
 import WishList from './screens/WishList';
 import Orders from './screens/Orders';
-import ModalScreen from './screens/ModalScreen';
+import ModalScreen, {LoginError} from './screens/ModalScreen';
 import SignUp from './screens/SignUp';
 import ForgotPassword from './screens/ForgotPassword';
 import Login from './screens/Login';
@@ -78,6 +78,7 @@ const App = () => {
             ...CommonStyleHeader,
           }}>
           <Stack.Screen name={Screens.ModalScreen} component={ModalScreen} />
+          <Stack.Screen name={Screens.ModalLoginError} component={LoginError} />
         </Stack.Group>
         <Stack.Group>
           <Stack.Screen
