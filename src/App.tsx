@@ -24,7 +24,7 @@ const Stack = createNativeStackNavigator<ScreensType>();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={Screens.CartConfirmation}>
+      <Stack.Navigator initialRouteName={Screens.Login}>
         <Stack.Group>
           <Stack.Screen
             name={Screens.Root}

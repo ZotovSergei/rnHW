@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import Card from '../Card';
 import {
   FlatList,
@@ -15,26 +15,25 @@ const Cards = () => {
   const [isLoading, setLoading] = useState(true);
 
   const [data, setData] = useState<Products[]>([]);
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
-  const fetchMyAPI = async (reload: boolean = false) => {
-    const response = await getProducts(reload);
-    setData([...data, ...response]);
-    setLoading(false);
-  };
+  const fetchMyAPI = useCallback(
+    async (reload: boolean = false) => {
+      const response = await getProducts(reload);
+      setData([...data, ...response]);
+      setLoading(false);
+    },
+    [data]
+  );
 
-  const onRefresh = React.useCallback(() => {
+  const onRefresh = useCallback(() => {
     setData([]);
     setRefreshing(true);
     fetchMyAPI(true).then(() => setRefreshing(false));
-    //TODO: FIXED IT
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [fetchMyAPI]);
 
   useEffect(() => {
     fetchMyAPI();
-    //TODO: FIXED IT
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderItem: ListRenderItem<Products> = ({item}) => {

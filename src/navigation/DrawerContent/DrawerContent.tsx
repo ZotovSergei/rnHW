@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {SectionList, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Colors, Screens} from '../../utils/constants';
 import Separator from '../../components/Separator';
@@ -11,6 +11,7 @@ import Call from '../../public/icons/call.svg';
 import Share from '../../public/icons/share.svg';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
+import {DrawerContentComponentProps} from '@react-navigation/drawer';
 
 const myAccountSection = {
   title: 'My Account',
@@ -35,7 +36,7 @@ const shareSection = {
   data: [{icon: <Share />, text: 'Share', screen: Screens.Profile}],
 };
 
-const DrawerContent = () => {
+const DrawerContent: FC<DrawerContentComponentProps> = () => {
   const navigation = useNavigation();
   const accessToken = useSelector((state) => state.authReducer.access_token);
   return (

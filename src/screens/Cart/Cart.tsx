@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {FC, useLayoutEffect} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {ScreensNavigationProp, ScreensRouteProp} from '../../utils/typings';
+import {ScreensType} from '../../utils/typings';
 import {Colors, Screens} from '../../utils/constants';
 import Avatar from '../../public/icons/avatar.svg';
 import EmptyCart from '../../public/icons/emptyCart.svg';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 const titleLogin = 'Login First!';
 const subtitleLogin = 'Login first to view your cart';
@@ -12,17 +12,16 @@ const titleCartEmpty = 'Your Card is empty!';
 const subtitleCartEmpty = 'Add product in your cart now';
 const linkText = 'New here? Sign Up';
 
-const Cart = () => {
-  const navigation = useNavigation<ScreensNavigationProp<Screens.Cart>>();
-  const route = useRoute<ScreensRouteProp<Screens.Cart>>();
+const Cart: FC<NativeStackScreenProps<ScreensType, Screens.Cart>> = ({
+  navigation,
+  route,
+}) => {
   const {accessToken} = route.params ?? {};
-  useEffect(() => {
+  useLayoutEffect(() => {
     navigation.setOptions({
       title: 'My Cart',
       headerTitleAlign: 'center',
     });
-    // TODO: FIXED IT
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
