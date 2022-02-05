@@ -13,17 +13,18 @@ import Profile from './screens/Profile';
 import Cart from './screens/Cart';
 import WishList from './screens/WishList';
 import Orders from './screens/Orders';
-import ModalScreen from './screens/ModalScreen';
+import ModalScreen, {LoginError} from './screens/ModalScreen';
 import SignUp from './screens/SignUp';
 import ForgotPassword from './screens/ForgotPassword';
 import Login from './screens/Login';
+import CartConfirmation from './screens/Cart/CartConfirmation';
 
 const Stack = createNativeStackNavigator<ScreensType>();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={Screens.Login}>
+      <Stack.Navigator initialRouteName={Screens.CartConfirmation}>
         <Stack.Group>
           <Stack.Screen
             name={Screens.Root}
@@ -50,13 +51,7 @@ const App = () => {
               ...CommonStyleHeader,
             }}
           />
-          <Stack.Screen
-            name={Screens.Cart}
-            component={Cart}
-            options={{
-              ...CommonStyleHeader,
-            }}
-          />
+
           <Stack.Screen
             name={Screens.WishList}
             component={WishList}
@@ -72,12 +67,29 @@ const App = () => {
             }}
           />
         </Stack.Group>
+        <Stack.Group>
+          <Stack.Screen
+            name={Screens.Cart}
+            component={Cart}
+            options={{
+              ...CommonStyleHeader,
+            }}
+          />
+          <Stack.Screen
+            name={Screens.CartConfirmation}
+            component={CartConfirmation}
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Stack.Group>
         <Stack.Group
           screenOptions={{
             presentation: 'modal',
             ...CommonStyleHeader,
           }}>
           <Stack.Screen name={Screens.ModalScreen} component={ModalScreen} />
+          <Stack.Screen name={Screens.ModalLoginError} component={LoginError} />
         </Stack.Group>
         <Stack.Group>
           <Stack.Screen

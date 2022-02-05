@@ -9,11 +9,15 @@ export type Product = {
   discountPrice: string;
   sale: string;
 };
-
+export type Credentials = {
+  password?: string,
+  username?: string
+}
 export type ModalParams = {
   title?: string;
   subtitle?: string;
   type: 'error' | 'warning' | 'success';
+  credentials?: Credentials;
 };
 
 export type CardType = {
@@ -30,9 +34,11 @@ export type ScreensType = {
   Profile: undefined;
   WishList: undefined;
   ModalScreen: ModalParams;
+  ModalLoginError: ModalParams;
   SignUp: undefined;
   Login: undefined;
   ForgotPassword: undefined;
+  CartConfirmation: undefined;
 };
 
 export type Links = {

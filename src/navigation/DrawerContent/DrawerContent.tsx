@@ -37,7 +37,7 @@ const shareSection = {
 
 const DrawerContent = () => {
   const navigation = useNavigation();
-  const accessToken = useSelector((state) => state.tokenReducer.access_token);
+  const accessToken = useSelector((state) => state.authReducer.access_token);
   return (
     <>
       <Text style={styles.title}>Ecommerce Store</Text>

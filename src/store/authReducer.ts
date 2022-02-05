@@ -1,11 +1,13 @@
 import {GET_TOKEN} from './actions';
 
-type Tokens = {
+export type Tokens = {
   access_token?: string,
   created_at?: number,
   expires_in?: number,
-  regresh_token?: string,
+  refresh_token?: string,
   token_type?: string,
+  error?: string | null,
+  error_description?: string | null,
 };
 
 type Actions = {
@@ -17,8 +19,10 @@ const initState: Tokens = {
   access_token: undefined,
   created_at: undefined,
   expires_in: undefined,
-  regresh_token: undefined,
+  refresh_token: undefined,
   token_type: undefined,
+  error_description: null,
+  error: null,
 };
 
 const reducer = (state = initState, action: Actions) => {
