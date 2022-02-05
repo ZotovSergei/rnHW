@@ -25,4 +25,5 @@ export enum Screens {
   SignUp = 'SignUp',
   Login = 'Login',
   ForgotPassword = 'ForgotPassword',
+  CartConfirmation = 'CartConfirmation',
 }

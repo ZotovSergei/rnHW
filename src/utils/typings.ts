@@ -38,6 +38,7 @@ export type ScreensType = {
   SignUp: undefined;
   Login: undefined;
   ForgotPassword: undefined;
+  CartConfirmation: undefined;
 };
 
 export type Links = {

@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   Linking,
   Animated,
@@ -16,7 +15,6 @@ import {useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {ScreensNavigationProp} from '../../utils/typings';
 import CustomInput from '../../components/CustonInput';
-import FireWork from '../../components/FireWork';
 
 const linkText = 'New here? Sign Up';
 const forgetPasswordText = 'Forgot Password?';
@@ -83,7 +81,6 @@ const Login = () => {
         <View>
           <Text style={styles.title}>{title}</Text>
         </View>
-        <FireWork />
         <CustomInput
           label={'Email Address'}
           value={email}
